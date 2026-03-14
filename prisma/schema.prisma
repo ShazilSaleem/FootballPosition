@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AssessmentResult {
+  id                 String   @id @default(cuid())
+  answers            Json
+  scores             Json
+  primaryKey         String
+  primaryName        String
+  primaryScore       Int
+  primaryArchetype   String
+  secondaryKey       String?
+  secondaryName      String?
+  secondaryScore     Int?
+  secondaryArchetype String?
+  tertiaryKey        String?
+  tertiaryName       String?
+  tertiaryScore      Int?
+  tertiaryArchetype  String?
+  strengths          String[]
+  watchouts          String[]
+  summary            String
+  utmSource          String?
+  utmMedium          String?
+  utmCampaign        String?
+  createdAt          DateTime @default(now())
+}
