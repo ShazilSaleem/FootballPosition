@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect } from 'react';
+import logo from '@/assests/logo.png';
 import { trackEvent } from '@/lib/analytics/analytics';
 
 type HomeScreenProps = {
@@ -72,7 +74,12 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
         </div>
         <div className="grid gap-10 px-6 py-10 md:px-10 md:py-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="relative">
-            <p className="animate-fade-up text-sm uppercase tracking-[0.32em] text-emerald-300 [animation-delay:0.05s]">Football Position Finder</p>
+            <div className="animate-fade-up flex items-center gap-4 [animation-delay:0.05s]">
+              <div className="p-1">
+                <Image src={logo} alt="Football Position Finder logo" className="h-16 w-16 object-contain md:h-20 md:w-20" priority />
+              </div>
+              <p className="text-base font-semibold uppercase tracking-[0.34em] text-emerald-300 md:text-lg">Football Position Finder</p>
+            </div>
             <h1 className="animate-fade-up mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white md:text-6xl [animation-delay:0.12s]">
               Find the football position that actually fits how you play.
             </h1>

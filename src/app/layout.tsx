@@ -4,12 +4,18 @@ import Script from 'next/script';
 import type { ReactNode } from 'react';
 import { AnalyticsProvider } from '@/components/AnalyticsProvider';
 import { PostHogProvider } from '@/components/PostHogProvider';
+import logo from '@/assests/logo.png';
 
 const ga4Id = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   title: 'Football Position Finder',
   description: 'Discover your best football position based on your playing style.',
+  icons: {
+    icon: logo.src,
+    shortcut: logo.src,
+    apple: logo.src,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -1,0 +1,36 @@
+<svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinGlow" x1="40" y1="24" x2="272" y2="296" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B7FFE2" />
+      <stop offset="0.52" stop-color="#6EE7C0" />
+      <stop offset="1" stop-color="#3FD0A5" />
+    </linearGradient>
+    <radialGradient id="pinFill" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 120) rotate(90) scale(160 140)">
+      <stop stop-color="#CFFFF0" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#66DDB6" stop-opacity="0.28" />
+    </radialGradient>
+  </defs>
+  <rect width="320" height="320" rx="64" fill="#071411" />
+  <ellipse cx="160" cy="277" rx="76" ry="18" fill="url(#pinGlow)" fill-opacity="0.12" />
+  <ellipse cx="160" cy="277" rx="58" ry="11" stroke="url(#pinGlow)" stroke-opacity="0.45" stroke-width="4" />
+  <path
+    d="M160 44C112.6 44 74 82.6 74 130C74 156.9 86.2 181.7 107.1 198L150.2 255.7C154.8 261.9 165.2 261.9 169.8 255.7L212.9 198C233.8 181.7 246 156.9 246 130C246 82.6 207.4 44 160 44Z"
+    fill="url(#pinFill)"
+    stroke="url(#pinGlow)"
+    stroke-width="8"
+    stroke-linejoin="round"
+  />
+  <circle cx="160" cy="131" r="56" stroke="url(#pinGlow)" stroke-width="7" />
+  <g stroke="url(#pinGlow)" stroke-width="5" stroke-linejoin="round">
+    <path d="M160 99L182 110L186 133L170 149H150L134 133L138 110L160 99Z" fill="none" />
+    <path d="M183 110L206 120L208 144L191 159L170 149L186 133L183 110Z" fill="none" />
+    <path d="M137 110L114 120L112 144L129 159L150 149L134 133L137 110Z" fill="none" />
+    <path d="M150 149L129 159L134 182H151L160 168L170 182H187L191 159L170 149H150Z" fill="none" />
+  </g>
+  <path d="M120 78C132 66 145 60 160 60C175 60 188 66 200 78" stroke="url(#pinGlow)" stroke-width="4" stroke-linecap="round" />
+  <g stroke="url(#pinGlow)" stroke-width="7" stroke-linecap="round">
+    <path d="M102 34C118 17 139 8 160 8C181 8 202 17 218 34" />
+    <path d="M115 50C127 38 143 31 160 31C177 31 193 38 205 50" />
+    <path d="M132 67C140 60 150 56 160 56C170 56 180 60 188 67" />
+  </g>
+</svg>
