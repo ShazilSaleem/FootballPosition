@@ -60,7 +60,7 @@ export function LeadCaptureStep({ entry, onViewed, onSubmit, isSubmitting = fals
             <div className="mt-8 grid gap-4 text-sm text-zinc-300 md:grid-cols-2">
               <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-4">
                 <p className="font-medium text-white">Result teaser</p>
-                <p className="mt-2 text-zinc-400">Primary fit: {entry.primary?.name ?? 'Position identified'}</p>
+                <p className="mt-2 text-zinc-400">A tailored role recommendation has been generated from your answers.</p>
               </div>
               <div className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-4">
                 <p className="font-medium text-white">What unlocks next</p>
@@ -70,14 +70,15 @@ export function LeadCaptureStep({ entry, onViewed, onSubmit, isSubmitting = fals
 
             <div className="mt-6 rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-5">
               <p className="text-sm uppercase tracking-[0.22em] text-zinc-500">Preview</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white">{entry.primary?.name ?? 'Your best-fit role'}</h2>
+              <h2 className="mt-3 text-3xl font-semibold text-white">Your position profile is ready</h2>
               <p className="mt-3 text-zinc-400">
-                {entry.summary.split('. ')[0] ? `${entry.summary.split('. ')[0]}.` : 'A strong fit has been identified based on your answers.'}
+                We have calculated your football profile already. Unlock the full report to see your best-fit role,
+                supporting fit, strengths, watchouts, and ranking.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-zinc-800 bg-black/30 p-4">
                   <p className="text-sm text-zinc-500">Top strength preview</p>
-                  <p className="mt-2 text-white">{entry.strengths[0] ?? 'Role clarity'}</p>
+                  <p className="mt-2 text-white blur-[2px] select-none">{entry.strengths[0] ?? 'Role clarity and development cues'}</p>
                 </div>
                 <div className="rounded-2xl border border-zinc-800 bg-black/30 p-4">
                   <p className="text-sm text-zinc-500">Complete result</p>
