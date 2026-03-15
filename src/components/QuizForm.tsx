@@ -46,34 +46,41 @@ export function QuizForm({ onComplete, onBackHome }: QuizFormProps) {
 
   return (
     <div className="mx-auto max-w-3xl rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl">
-      <div className="mb-6">
-        <div className="mb-2 flex items-center justify-between text-sm text-zinc-400">
-          <span>Question {currentIndex + 1} of {QUESTIONS.length}</span>
-          <span>{Math.round(progress)}%</span>
+      <div key={currentQuestion.id} className="animate-question-in">
+        <div className="mb-6">
+          <div className="mb-2 flex items-center justify-between text-sm text-zinc-400">
+            <span>Question {currentIndex + 1} of {QUESTIONS.length}</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
+          <ProgressBar value={progress} />
         </div>
-        <ProgressBar value={progress} />
-      </div>
 
-      <h2 className="text-2xl font-semibold text-white md:text-3xl">{currentQuestion.title}</h2>
+        <h2 className="text-2xl font-semibold text-white md:text-3xl">{currentQuestion.title}</h2>
 
-      <div className="mt-6 grid gap-3">
-        {currentQuestion.options.map((option) => (
+        <div className="mt-6 grid gap-3">
+          {currentQuestion.options.map((option, index) => (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => handleSelect(option.id)}
+              className="animate-fade-up rounded-2xl border border-zinc-700 bg-zinc-950 px-4 py-4 text-left text-zinc-100 transition duration-200 hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-900 active:scale-[0.99]"
+              style={{ animationDelay: `${index * 0.06}s` }}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-6 flex items-center justify-between gap-4">
           <button
-            key={option.id}
             type="button"
-            onClick={() => handleSelect(option.id)}
-            className="rounded-2xl border border-zinc-700 bg-zinc-950 px-4 py-4 text-left text-zinc-100 transition hover:border-zinc-500 hover:bg-zinc-900"
+            onClick={handleBack}
+            className="rounded-xl border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-white"
           >
-            {option.label}
+            {currentIndex === 0 ? 'Back to home' : 'Back'}
           </button>
-        ))}
-      </div>
-
-      <div className="mt-6 flex items-center justify-between gap-4">
-        <button type="button" onClick={handleBack} className="rounded-xl border border-zinc-700 px-4 py-2 text-sm text-zinc-300">
-          {currentIndex === 0 ? 'Back to home' : 'Back'}
-        </button>
-        <p className="text-right text-sm text-zinc-500">Choose the option that feels most natural to you.</p>
+          <p className="text-right text-sm text-zinc-500">Choose the option that feels most natural to you.</p>
+        </div>
       </div>
     </div>
   );

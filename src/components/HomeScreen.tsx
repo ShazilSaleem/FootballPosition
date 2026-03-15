@@ -65,47 +65,51 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
 
   return (
     <section className="pb-16">
-      <div className="overflow-hidden rounded-[2rem] border border-zinc-800 bg-[radial-gradient(circle_at_top_left,_rgba(110,231,183,0.14),_transparent_30%),linear-gradient(135deg,_#101516_0%,_#050505_55%,_#0e1112_100%)]">
+      <div className="animate-fade-soft overflow-hidden rounded-[2rem] border border-zinc-800 bg-[radial-gradient(circle_at_top_left,_rgba(110,231,183,0.14),_transparent_30%),linear-gradient(135deg,_#101516_0%,_#050505_55%,_#0e1112_100%)]">
+        <div className="pointer-events-none absolute hidden lg:block">
+          <div className="animate-float-slow absolute left-[62%] top-12 h-24 w-24 rounded-full bg-emerald-300/10 blur-2xl" />
+          <div className="animate-float-slow absolute left-[78%] top-44 h-32 w-32 rounded-full bg-cyan-300/10 blur-3xl [animation-delay:0.6s]" />
+        </div>
         <div className="grid gap-10 px-6 py-10 md:px-10 md:py-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.32em] text-emerald-300">Football Position Finder</p>
-            <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white md:text-6xl">
+          <div className="relative">
+            <p className="animate-fade-up text-sm uppercase tracking-[0.32em] text-emerald-300 [animation-delay:0.05s]">Football Position Finder</p>
+            <h1 className="animate-fade-up mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white md:text-6xl [animation-delay:0.12s]">
               Find the football position that actually fits how you play.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-300 md:text-lg">
+            <p className="animate-fade-up mt-6 max-w-2xl text-base leading-8 text-zinc-300 md:text-lg [animation-delay:0.2s]">
               For amateur players, position confusion slows development. This assessment turns your natural tendencies
               into a clearer role recommendation so you can train with more purpose and communicate your fit with more
               confidence.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="animate-fade-up mt-8 flex flex-col gap-3 sm:flex-row [animation-delay:0.28s]">
               <button
                 onClick={onStart}
-                className="rounded-2xl bg-emerald-300 px-6 py-3 font-medium text-black transition hover:bg-emerald-200"
+                className="rounded-2xl bg-emerald-300 px-6 py-3 font-medium text-black transition hover:-translate-y-0.5 hover:bg-emerald-200"
               >
                 Start the 12-question assessment
               </button>
               <button
                 onClick={onShowAbout}
-                className="rounded-2xl border border-zinc-700 px-6 py-3 font-medium text-white transition hover:border-zinc-500"
+                className="rounded-2xl border border-zinc-700 px-6 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:border-zinc-500"
               >
                 See how it works
               </button>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-zinc-300">
+            <div className="animate-fade-up mt-8 flex flex-wrap gap-3 text-sm text-zinc-300 [animation-delay:0.36s]">
               <span className="rounded-full border border-zinc-700 bg-zinc-900/70 px-4 py-2">Takes about 2 minutes</span>
               <span className="rounded-full border border-zinc-700 bg-zinc-900/70 px-4 py-2">No login required</span>
               <span className="rounded-full border border-zinc-700 bg-zinc-900/70 px-4 py-2">Built for amateur players</span>
             </div>
           </div>
 
-          <div className="grid gap-4">
+          <div className="animate-fade-up grid gap-4 [animation-delay:0.32s]">
             <div className="rounded-[1.75rem] border border-zinc-800 bg-black/40 p-6 backdrop-blur">
               <p className="text-sm uppercase tracking-[0.25em] text-zinc-500">What you get</p>
               <div className="mt-5 grid gap-3">
-                {BENEFITS.map((item) => (
-                  <div key={item.title} className="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-4">
+                {BENEFITS.map((item, index) => (
+                  <div key={item.title} className="animate-fade-up rounded-2xl border border-zinc-800 bg-zinc-900/80 p-4" style={{ animationDelay: `${0.42 + index * 0.08}s` }}>
                     <p className="font-medium text-white">{item.title}</p>
                     <p className="mt-2 text-sm leading-7 text-zinc-400">{item.copy}</p>
                   </div>
@@ -117,7 +121,7 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6">
+        <div className="animate-fade-up rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 [animation-delay:0.08s]">
           <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">How it works</p>
           <h2 className="mt-4 text-3xl font-semibold text-white">A short assessment with a practical outcome.</h2>
           <div className="mt-6 grid gap-4">
@@ -132,12 +136,12 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6">
+        <div className="animate-fade-up rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 [animation-delay:0.16s]">
           <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Positions covered</p>
           <h2 className="mt-4 text-3xl font-semibold text-white">Coverage across the spine, the flanks, and the final third.</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {POSITIONS.map((position) => (
-              <div key={position} className="rounded-2xl border border-zinc-800 bg-zinc-900 px-4 py-4 text-zinc-200">
+            {POSITIONS.map((position, index) => (
+              <div key={position} className="animate-fade-up rounded-2xl border border-zinc-800 bg-zinc-900 px-4 py-4 text-zinc-200" style={{ animationDelay: `${0.22 + index * 0.04}s` }}>
                 {position}
               </div>
             ))}
@@ -145,7 +149,7 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
         </div>
       </div>
 
-      <div className="mt-8 rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 md:p-8">
+      <div className="animate-fade-up mt-8 rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 md:p-8 [animation-delay:0.18s]">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Why this helps amateur players</p>
@@ -168,7 +172,7 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
         </div>
       </div>
 
-      <div className="mt-8 rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 md:p-8">
+      <div className="animate-fade-up mt-8 rounded-[1.75rem] border border-zinc-800 bg-zinc-950 p-6 md:p-8 [animation-delay:0.24s]">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Why players trust this</p>
@@ -181,13 +185,14 @@ export function HomeScreen({ onStart, onShowAbout }: HomeScreenProps) {
         </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {TRUST_SIGNALS.map((item) => (
+          {TRUST_SIGNALS.map((item, index) => (
             <a
               key={item.name}
               href={item.href}
               target="_blank"
               rel="noreferrer"
-              className="rounded-3xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-600 hover:bg-zinc-900/80"
+              className="animate-fade-up rounded-3xl border border-zinc-800 bg-zinc-900 p-5 transition hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900/80"
+              style={{ animationDelay: `${0.3 + index * 0.08}s` }}
             >
               <div className="text-lg font-medium text-white">{item.name}</div>
               <p className="mt-3 text-sm leading-7 text-zinc-400">{item.summary}</p>

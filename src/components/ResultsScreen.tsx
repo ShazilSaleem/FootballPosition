@@ -120,6 +120,19 @@ export function ResultsScreen({
         </div>
       </div>
 
+      {(entry.leadName || entry.leadEmail) ? (
+        <div className="mt-6 rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-6">
+          <div className="flex flex-col gap-2">
+            <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Saved contact</p>
+            <h2 className="text-2xl font-semibold text-white">Lead information attached to this result</h2>
+          </div>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <ResultCard label="Name" value={entry.leadName ?? '-'} muted />
+            <ResultCard label="Email" value={entry.leadEmail ?? '-'} muted />
+          </div>
+        </div>
+      ) : null}
+
       <ResultsFeedbackSection
         initialRating={entry.feedbackRating ?? null}
         initialText={entry.feedbackText ?? null}
