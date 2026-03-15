@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db/prisma';
+import { getPrisma } from '@/lib/db/prisma';
 import { calculateResult, type AnswerMap } from '@/lib/scoring/calculateResult';
 import { createResultRequestSchema } from '@/lib/validation/results';
 
 export async function GET() {
+  const prisma = getPrisma();
   const results = await prisma.assessmentResult.findMany({
     orderBy: { createdAt: 'desc' },
     take: 10,
@@ -13,6 +14,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const prisma = getPrisma();
   const json = await request.json();
   const parsed = createResultRequestSchema.safeParse(json);
 
@@ -53,6 +55,7 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE() {
+  const prisma = getPrisma();
   await prisma.assessmentResult.deleteMany();
   return NextResponse.json({ ok: true });
 }
