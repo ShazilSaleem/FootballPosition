@@ -538,6 +538,7 @@ export const AssessmentResultScalarFieldEnum = {
   summary: 'summary',
   leadName: 'leadName',
   leadEmail: 'leadEmail',
+  leadRole: 'leadRole',
   leadCapturedAt: 'leadCapturedAt',
   feedbackRating: 'feedbackRating',
   feedbackText: 'feedbackText',

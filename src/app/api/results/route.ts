@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   }
 
   const answers = parsed.data.answers as AnswerMap;
-  const { utmSource, utmMedium, utmCampaign, leadName, leadEmail, feedbackRating, feedbackText } = parsed.data;
+  const { utmSource, utmMedium, utmCampaign, leadName, leadEmail, leadRole, feedbackRating, feedbackText } = parsed.data;
   const computed = calculateResult(answers);
 
   const created = await prisma.assessmentResult.create({
@@ -47,7 +47,8 @@ export async function POST(request: Request) {
       summary: computed.summary,
       leadName: leadName ?? null,
       leadEmail: leadEmail ?? null,
-      leadCapturedAt: leadName || leadEmail ? new Date() : null,
+      leadRole: leadRole ?? null,
+      leadCapturedAt: leadName || leadEmail || leadRole ? new Date() : null,
       feedbackRating: feedbackRating ?? null,
       feedbackText: feedbackText ?? null,
       feedbackSubmittedAt: feedbackRating || feedbackText ? new Date() : null,

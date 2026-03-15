@@ -24,14 +24,15 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
-  const { leadName, leadEmail, feedbackRating, feedbackText } = parsed.data;
+  const { leadName, leadEmail, leadRole, feedbackRating, feedbackText } = parsed.data;
   const result = await prisma.assessmentResult.update({
     where: { id: params.id },
     data: {
       ...(leadName !== undefined ? { leadName } : {}),
       ...(leadEmail !== undefined ? { leadEmail } : {}),
-      ...(leadName !== undefined || leadEmail !== undefined
-        ? { leadCapturedAt: leadName || leadEmail ? new Date() : null }
+      ...(leadRole !== undefined ? { leadRole } : {}),
+      ...(leadName !== undefined || leadEmail !== undefined || leadRole !== undefined
+        ? { leadCapturedAt: leadName || leadEmail || leadRole ? new Date() : null }
         : {}),
       ...(feedbackRating !== undefined ? { feedbackRating } : {}),
       ...(feedbackText !== undefined ? { feedbackText } : {}),

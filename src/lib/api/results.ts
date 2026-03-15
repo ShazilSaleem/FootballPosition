@@ -1,6 +1,6 @@
 import { POSITIONS, type PositionKey } from '@/data/questions';
 import type { AnswerMap, RankedPosition } from '@/lib/scoring/calculateResult';
-import type { FeedbackRating, SavedResultEntry } from '@/lib/storage/results';
+import type { FeedbackRating, LeadRole, SavedResultEntry } from '@/lib/storage/results';
 import type { SourceMetadata } from '@/lib/analytics/source';
 
 type RemoteResultPayload = {
@@ -25,6 +25,7 @@ type RemoteResultPayload = {
   summary: string;
   leadName?: string | null;
   leadEmail?: string | null;
+  leadRole?: LeadRole | null;
   leadCapturedAt?: string | null;
   feedbackRating?: FeedbackRating | null;
   feedbackText?: string | null;
@@ -37,6 +38,7 @@ type RemoteResultPayload = {
 export type ResultUpdatePayload = {
   leadName?: string | null;
   leadEmail?: string | null;
+  leadRole?: LeadRole | null;
   feedbackRating?: FeedbackRating | null;
   feedbackText?: string | null;
 };
@@ -71,6 +73,7 @@ function mapRemoteResult(payload: RemoteResultPayload): SavedResultEntry {
     watchouts: Array.isArray(payload.watchouts) ? payload.watchouts : [],
     leadName: payload.leadName ?? null,
     leadEmail: payload.leadEmail ?? null,
+    leadRole: payload.leadRole ?? null,
     leadCapturedAt: payload.leadCapturedAt ?? null,
     feedbackRating: payload.feedbackRating ?? null,
     feedbackText: payload.feedbackText ?? null,

@@ -28,6 +28,7 @@ model AssessmentResult {
   summary            String
   leadName           String?
   leadEmail          String?
+  leadRole           String?
   leadCapturedAt     DateTime?
   feedbackRating     String?
   feedbackText       String?

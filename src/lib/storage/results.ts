@@ -1,6 +1,7 @@
 import type { AnswerMap, RankedPosition } from '@/lib/scoring/calculateResult';
 
 export type FeedbackRating = 'yes' | 'somewhat' | 'no';
+export type LeadRole = 'player' | 'coach' | 'academy';
 
 export type SavedResultEntry = {
   id: string;
@@ -13,6 +14,7 @@ export type SavedResultEntry = {
   watchouts: string[];
   leadName?: string | null;
   leadEmail?: string | null;
+  leadRole?: LeadRole | null;
   leadCapturedAt?: string | null;
   feedbackRating?: FeedbackRating | null;
   feedbackText?: string | null;

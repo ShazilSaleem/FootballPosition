@@ -44,12 +44,13 @@ export function HistoryScreen({ savedResults, onOpenSaved, onClearHistory, onBac
                 <ResultCard label="Secondary" value={entry.secondary?.name ?? '-'} muted />
               </div>
 
-              {(entry.leadName || entry.leadEmail) ? (
+              {(entry.leadName || entry.leadEmail || entry.leadRole) ? (
                 <div className="mt-4 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
                   <p className="text-sm uppercase tracking-[0.22em] text-emerald-300">Captured lead</p>
-                  <div className="mt-3 grid gap-3 md:grid-cols-2">
+                  <div className="mt-3 grid gap-3 md:grid-cols-3">
                     <ResultCard label="Name" value={entry.leadName ?? '-'} muted />
                     <ResultCard label="Email" value={entry.leadEmail ?? '-'} muted />
+                    <ResultCard label="Role" value={entry.leadRole ?? '-'} muted />
                   </div>
                 </div>
               ) : null}

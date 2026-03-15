@@ -77,6 +77,7 @@ export function AppShell() {
       watchouts: computed.watchouts,
       leadName: null,
       leadEmail: null,
+      leadRole: null,
       leadCapturedAt: null,
       feedbackRating: null,
       feedbackText: null,
@@ -122,19 +123,21 @@ export function AppShell() {
     setScreen('quiz');
   }
 
-  async function handleLeadSubmit(payload: { leadName: string | null; leadEmail: string | null }) {
+  async function handleLeadSubmit(payload: { leadName: string; leadEmail: string; leadRole: 'player' | 'coach' | 'academy' }) {
     if (!activeResult) return;
 
     setIsLeadSaving(true);
     trackEvent('lead_submitted', {
-      hasName: Boolean(payload.leadName),
-      hasEmail: Boolean(payload.leadEmail),
+      hasName: true,
+      hasEmail: true,
+      leadRole: payload.leadRole,
     });
 
     const nextEntry: SavedResultEntry = {
       ...activeResult,
       leadName: payload.leadName,
       leadEmail: payload.leadEmail,
+      leadRole: payload.leadRole,
       leadCapturedAt: new Date().toISOString(),
     };
 
@@ -154,11 +157,6 @@ export function AppShell() {
       setIsLeadSaving(false);
       setScreen('results');
     }
-  }
-
-  function handleLeadSkip() {
-    trackEvent('lead_skipped');
-    setScreen('results');
   }
 
   function handleLeadViewed() {
@@ -214,8 +212,8 @@ export function AppShell() {
         {screen === 'quiz' && <QuizForm onComplete={handleComplete} onBackHome={() => setScreen('home')} />}
         {screen === 'lead' && activeResult && (
           <LeadCaptureStep
+            entry={activeResult}
             onViewed={handleLeadViewed}
-            onSkip={handleLeadSkip}
             onSubmit={handleLeadSubmit}
             isSubmitting={isLeadSaving}
           />
