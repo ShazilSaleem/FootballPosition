@@ -53,6 +53,12 @@ export type AssessmentResultMinAggregateOutputType = {
   tertiaryScore: number | null
   tertiaryArchetype: string | null
   summary: string | null
+  leadName: string | null
+  leadEmail: string | null
+  leadCapturedAt: Date | null
+  feedbackRating: string | null
+  feedbackText: string | null
+  feedbackSubmittedAt: Date | null
   utmSource: string | null
   utmMedium: string | null
   utmCampaign: string | null
@@ -74,6 +80,12 @@ export type AssessmentResultMaxAggregateOutputType = {
   tertiaryScore: number | null
   tertiaryArchetype: string | null
   summary: string | null
+  leadName: string | null
+  leadEmail: string | null
+  leadCapturedAt: Date | null
+  feedbackRating: string | null
+  feedbackText: string | null
+  feedbackSubmittedAt: Date | null
   utmSource: string | null
   utmMedium: string | null
   utmCampaign: string | null
@@ -99,6 +111,12 @@ export type AssessmentResultCountAggregateOutputType = {
   strengths: number
   watchouts: number
   summary: number
+  leadName: number
+  leadEmail: number
+  leadCapturedAt: number
+  feedbackRating: number
+  feedbackText: number
+  feedbackSubmittedAt: number
   utmSource: number
   utmMedium: number
   utmCampaign: number
@@ -134,6 +152,12 @@ export type AssessmentResultMinAggregateInputType = {
   tertiaryScore?: true
   tertiaryArchetype?: true
   summary?: true
+  leadName?: true
+  leadEmail?: true
+  leadCapturedAt?: true
+  feedbackRating?: true
+  feedbackText?: true
+  feedbackSubmittedAt?: true
   utmSource?: true
   utmMedium?: true
   utmCampaign?: true
@@ -155,6 +179,12 @@ export type AssessmentResultMaxAggregateInputType = {
   tertiaryScore?: true
   tertiaryArchetype?: true
   summary?: true
+  leadName?: true
+  leadEmail?: true
+  leadCapturedAt?: true
+  feedbackRating?: true
+  feedbackText?: true
+  feedbackSubmittedAt?: true
   utmSource?: true
   utmMedium?: true
   utmCampaign?: true
@@ -180,6 +210,12 @@ export type AssessmentResultCountAggregateInputType = {
   strengths?: true
   watchouts?: true
   summary?: true
+  leadName?: true
+  leadEmail?: true
+  leadCapturedAt?: true
+  feedbackRating?: true
+  feedbackText?: true
+  feedbackSubmittedAt?: true
   utmSource?: true
   utmMedium?: true
   utmCampaign?: true
@@ -292,6 +328,12 @@ export type AssessmentResultGroupByOutputType = {
   strengths: string[]
   watchouts: string[]
   summary: string
+  leadName: string | null
+  leadEmail: string | null
+  leadCapturedAt: Date | null
+  feedbackRating: string | null
+  feedbackText: string | null
+  feedbackSubmittedAt: Date | null
   utmSource: string | null
   utmMedium: string | null
   utmCampaign: string | null
@@ -340,6 +382,12 @@ export type AssessmentResultWhereInput = {
   strengths?: Prisma.StringNullableListFilter<"AssessmentResult">
   watchouts?: Prisma.StringNullableListFilter<"AssessmentResult">
   summary?: Prisma.StringFilter<"AssessmentResult"> | string
+  leadName?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  leadEmail?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  leadCapturedAt?: Prisma.DateTimeNullableFilter<"AssessmentResult"> | Date | string | null
+  feedbackRating?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  feedbackText?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  feedbackSubmittedAt?: Prisma.DateTimeNullableFilter<"AssessmentResult"> | Date | string | null
   utmSource?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
   utmMedium?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
   utmCampaign?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
@@ -365,6 +413,12 @@ export type AssessmentResultOrderByWithRelationInput = {
   strengths?: Prisma.SortOrder
   watchouts?: Prisma.SortOrder
   summary?: Prisma.SortOrder
+  leadName?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadEmail?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadCapturedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackRating?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackText?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackSubmittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   utmSource?: Prisma.SortOrderInput | Prisma.SortOrder
   utmMedium?: Prisma.SortOrderInput | Prisma.SortOrder
   utmCampaign?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -393,6 +447,12 @@ export type AssessmentResultWhereUniqueInput = Prisma.AtLeast<{
   strengths?: Prisma.StringNullableListFilter<"AssessmentResult">
   watchouts?: Prisma.StringNullableListFilter<"AssessmentResult">
   summary?: Prisma.StringFilter<"AssessmentResult"> | string
+  leadName?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  leadEmail?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  leadCapturedAt?: Prisma.DateTimeNullableFilter<"AssessmentResult"> | Date | string | null
+  feedbackRating?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  feedbackText?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
+  feedbackSubmittedAt?: Prisma.DateTimeNullableFilter<"AssessmentResult"> | Date | string | null
   utmSource?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
   utmMedium?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
   utmCampaign?: Prisma.StringNullableFilter<"AssessmentResult"> | string | null
@@ -418,6 +478,12 @@ export type AssessmentResultOrderByWithAggregationInput = {
   strengths?: Prisma.SortOrder
   watchouts?: Prisma.SortOrder
   summary?: Prisma.SortOrder
+  leadName?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadEmail?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadCapturedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackRating?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackText?: Prisma.SortOrderInput | Prisma.SortOrder
+  feedbackSubmittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   utmSource?: Prisma.SortOrderInput | Prisma.SortOrder
   utmMedium?: Prisma.SortOrderInput | Prisma.SortOrder
   utmCampaign?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -451,6 +517,12 @@ export type AssessmentResultScalarWhereWithAggregatesInput = {
   strengths?: Prisma.StringNullableListFilter<"AssessmentResult">
   watchouts?: Prisma.StringNullableListFilter<"AssessmentResult">
   summary?: Prisma.StringWithAggregatesFilter<"AssessmentResult"> | string
+  leadName?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
+  leadEmail?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
+  leadCapturedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AssessmentResult"> | Date | string | null
+  feedbackRating?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
+  feedbackText?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
+  feedbackSubmittedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AssessmentResult"> | Date | string | null
   utmSource?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
   utmMedium?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
   utmCampaign?: Prisma.StringNullableWithAggregatesFilter<"AssessmentResult"> | string | null
@@ -476,6 +548,12 @@ export type AssessmentResultCreateInput = {
   strengths?: Prisma.AssessmentResultCreatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultCreatewatchoutsInput | string[]
   summary: string
+  leadName?: string | null
+  leadEmail?: string | null
+  leadCapturedAt?: Date | string | null
+  feedbackRating?: string | null
+  feedbackText?: string | null
+  feedbackSubmittedAt?: Date | string | null
   utmSource?: string | null
   utmMedium?: string | null
   utmCampaign?: string | null
@@ -501,6 +579,12 @@ export type AssessmentResultUncheckedCreateInput = {
   strengths?: Prisma.AssessmentResultCreatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultCreatewatchoutsInput | string[]
   summary: string
+  leadName?: string | null
+  leadEmail?: string | null
+  leadCapturedAt?: Date | string | null
+  feedbackRating?: string | null
+  feedbackText?: string | null
+  feedbackSubmittedAt?: Date | string | null
   utmSource?: string | null
   utmMedium?: string | null
   utmCampaign?: string | null
@@ -526,6 +610,12 @@ export type AssessmentResultUpdateInput = {
   strengths?: Prisma.AssessmentResultUpdatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultUpdatewatchoutsInput | string[]
   summary?: Prisma.StringFieldUpdateOperationsInput | string
+  leadName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadCapturedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  feedbackRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackSubmittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   utmSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmCampaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -551,6 +641,12 @@ export type AssessmentResultUncheckedUpdateInput = {
   strengths?: Prisma.AssessmentResultUpdatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultUpdatewatchoutsInput | string[]
   summary?: Prisma.StringFieldUpdateOperationsInput | string
+  leadName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadCapturedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  feedbackRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackSubmittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   utmSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmCampaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -576,6 +672,12 @@ export type AssessmentResultCreateManyInput = {
   strengths?: Prisma.AssessmentResultCreatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultCreatewatchoutsInput | string[]
   summary: string
+  leadName?: string | null
+  leadEmail?: string | null
+  leadCapturedAt?: Date | string | null
+  feedbackRating?: string | null
+  feedbackText?: string | null
+  feedbackSubmittedAt?: Date | string | null
   utmSource?: string | null
   utmMedium?: string | null
   utmCampaign?: string | null
@@ -601,6 +703,12 @@ export type AssessmentResultUpdateManyMutationInput = {
   strengths?: Prisma.AssessmentResultUpdatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultUpdatewatchoutsInput | string[]
   summary?: Prisma.StringFieldUpdateOperationsInput | string
+  leadName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadCapturedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  feedbackRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackSubmittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   utmSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmCampaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -626,6 +734,12 @@ export type AssessmentResultUncheckedUpdateManyInput = {
   strengths?: Prisma.AssessmentResultUpdatestrengthsInput | string[]
   watchouts?: Prisma.AssessmentResultUpdatewatchoutsInput | string[]
   summary?: Prisma.StringFieldUpdateOperationsInput | string
+  leadName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadCapturedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  feedbackRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  feedbackSubmittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   utmSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   utmCampaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -659,6 +773,12 @@ export type AssessmentResultCountOrderByAggregateInput = {
   strengths?: Prisma.SortOrder
   watchouts?: Prisma.SortOrder
   summary?: Prisma.SortOrder
+  leadName?: Prisma.SortOrder
+  leadEmail?: Prisma.SortOrder
+  leadCapturedAt?: Prisma.SortOrder
+  feedbackRating?: Prisma.SortOrder
+  feedbackText?: Prisma.SortOrder
+  feedbackSubmittedAt?: Prisma.SortOrder
   utmSource?: Prisma.SortOrder
   utmMedium?: Prisma.SortOrder
   utmCampaign?: Prisma.SortOrder
@@ -686,6 +806,12 @@ export type AssessmentResultMaxOrderByAggregateInput = {
   tertiaryScore?: Prisma.SortOrder
   tertiaryArchetype?: Prisma.SortOrder
   summary?: Prisma.SortOrder
+  leadName?: Prisma.SortOrder
+  leadEmail?: Prisma.SortOrder
+  leadCapturedAt?: Prisma.SortOrder
+  feedbackRating?: Prisma.SortOrder
+  feedbackText?: Prisma.SortOrder
+  feedbackSubmittedAt?: Prisma.SortOrder
   utmSource?: Prisma.SortOrder
   utmMedium?: Prisma.SortOrder
   utmCampaign?: Prisma.SortOrder
@@ -707,6 +833,12 @@ export type AssessmentResultMinOrderByAggregateInput = {
   tertiaryScore?: Prisma.SortOrder
   tertiaryArchetype?: Prisma.SortOrder
   summary?: Prisma.SortOrder
+  leadName?: Prisma.SortOrder
+  leadEmail?: Prisma.SortOrder
+  leadCapturedAt?: Prisma.SortOrder
+  feedbackRating?: Prisma.SortOrder
+  feedbackText?: Prisma.SortOrder
+  feedbackSubmittedAt?: Prisma.SortOrder
   utmSource?: Prisma.SortOrder
   utmMedium?: Prisma.SortOrder
   utmCampaign?: Prisma.SortOrder
@@ -761,6 +893,10 @@ export type AssessmentResultUpdatewatchoutsInput = {
   push?: string | string[]
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
@@ -786,6 +922,12 @@ export type AssessmentResultSelect<ExtArgs extends runtime.Types.Extensions.Inte
   strengths?: boolean
   watchouts?: boolean
   summary?: boolean
+  leadName?: boolean
+  leadEmail?: boolean
+  leadCapturedAt?: boolean
+  feedbackRating?: boolean
+  feedbackText?: boolean
+  feedbackSubmittedAt?: boolean
   utmSource?: boolean
   utmMedium?: boolean
   utmCampaign?: boolean
@@ -811,6 +953,12 @@ export type AssessmentResultSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   strengths?: boolean
   watchouts?: boolean
   summary?: boolean
+  leadName?: boolean
+  leadEmail?: boolean
+  leadCapturedAt?: boolean
+  feedbackRating?: boolean
+  feedbackText?: boolean
+  feedbackSubmittedAt?: boolean
   utmSource?: boolean
   utmMedium?: boolean
   utmCampaign?: boolean
@@ -836,6 +984,12 @@ export type AssessmentResultSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   strengths?: boolean
   watchouts?: boolean
   summary?: boolean
+  leadName?: boolean
+  leadEmail?: boolean
+  leadCapturedAt?: boolean
+  feedbackRating?: boolean
+  feedbackText?: boolean
+  feedbackSubmittedAt?: boolean
   utmSource?: boolean
   utmMedium?: boolean
   utmCampaign?: boolean
@@ -861,13 +1015,19 @@ export type AssessmentResultSelectScalar = {
   strengths?: boolean
   watchouts?: boolean
   summary?: boolean
+  leadName?: boolean
+  leadEmail?: boolean
+  leadCapturedAt?: boolean
+  feedbackRating?: boolean
+  feedbackText?: boolean
+  feedbackSubmittedAt?: boolean
   utmSource?: boolean
   utmMedium?: boolean
   utmCampaign?: boolean
   createdAt?: boolean
 }
 
-export type AssessmentResultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "answers" | "scores" | "primaryKey" | "primaryName" | "primaryScore" | "primaryArchetype" | "secondaryKey" | "secondaryName" | "secondaryScore" | "secondaryArchetype" | "tertiaryKey" | "tertiaryName" | "tertiaryScore" | "tertiaryArchetype" | "strengths" | "watchouts" | "summary" | "utmSource" | "utmMedium" | "utmCampaign" | "createdAt", ExtArgs["result"]["assessmentResult"]>
+export type AssessmentResultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "answers" | "scores" | "primaryKey" | "primaryName" | "primaryScore" | "primaryArchetype" | "secondaryKey" | "secondaryName" | "secondaryScore" | "secondaryArchetype" | "tertiaryKey" | "tertiaryName" | "tertiaryScore" | "tertiaryArchetype" | "strengths" | "watchouts" | "summary" | "leadName" | "leadEmail" | "leadCapturedAt" | "feedbackRating" | "feedbackText" | "feedbackSubmittedAt" | "utmSource" | "utmMedium" | "utmCampaign" | "createdAt", ExtArgs["result"]["assessmentResult"]>
 
 export type $AssessmentResultPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AssessmentResult"
@@ -891,6 +1051,12 @@ export type $AssessmentResultPayload<ExtArgs extends runtime.Types.Extensions.In
     strengths: string[]
     watchouts: string[]
     summary: string
+    leadName: string | null
+    leadEmail: string | null
+    leadCapturedAt: Date | null
+    feedbackRating: string | null
+    feedbackText: string | null
+    feedbackSubmittedAt: Date | null
     utmSource: string | null
     utmMedium: string | null
     utmCampaign: string | null
@@ -1336,6 +1502,12 @@ export interface AssessmentResultFieldRefs {
   readonly strengths: Prisma.FieldRef<"AssessmentResult", 'String[]'>
   readonly watchouts: Prisma.FieldRef<"AssessmentResult", 'String[]'>
   readonly summary: Prisma.FieldRef<"AssessmentResult", 'String'>
+  readonly leadName: Prisma.FieldRef<"AssessmentResult", 'String'>
+  readonly leadEmail: Prisma.FieldRef<"AssessmentResult", 'String'>
+  readonly leadCapturedAt: Prisma.FieldRef<"AssessmentResult", 'DateTime'>
+  readonly feedbackRating: Prisma.FieldRef<"AssessmentResult", 'String'>
+  readonly feedbackText: Prisma.FieldRef<"AssessmentResult", 'String'>
+  readonly feedbackSubmittedAt: Prisma.FieldRef<"AssessmentResult", 'DateTime'>
   readonly utmSource: Prisma.FieldRef<"AssessmentResult", 'String'>
   readonly utmMedium: Prisma.FieldRef<"AssessmentResult", 'String'>
   readonly utmCampaign: Prisma.FieldRef<"AssessmentResult", 'String'>

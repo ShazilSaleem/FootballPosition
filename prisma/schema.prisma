@@ -26,6 +26,12 @@ model AssessmentResult {
   strengths          String[]
   watchouts          String[]
   summary            String
+  leadName           String?
+  leadEmail          String?
+  leadCapturedAt     DateTime?
+  feedbackRating     String?
+  feedbackText       String?
+  feedbackSubmittedAt DateTime?
   utmSource          String?
   utmMedium          String?
   utmCampaign        String?

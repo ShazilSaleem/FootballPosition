@@ -1,6 +1,6 @@
 import { POSITIONS, type PositionKey } from '@/data/questions';
 import type { AnswerMap, RankedPosition } from '@/lib/scoring/calculateResult';
-import type { SavedResultEntry } from '@/lib/storage/results';
+import type { FeedbackRating, SavedResultEntry } from '@/lib/storage/results';
 import type { SourceMetadata } from '@/lib/analytics/source';
 
 type RemoteResultPayload = {
@@ -23,9 +23,22 @@ type RemoteResultPayload = {
   strengths: string[];
   watchouts: string[];
   summary: string;
+  leadName?: string | null;
+  leadEmail?: string | null;
+  leadCapturedAt?: string | null;
+  feedbackRating?: FeedbackRating | null;
+  feedbackText?: string | null;
+  feedbackSubmittedAt?: string | null;
   utmSource?: string | null;
   utmMedium?: string | null;
   utmCampaign?: string | null;
+};
+
+export type ResultUpdatePayload = {
+  leadName?: string | null;
+  leadEmail?: string | null;
+  feedbackRating?: FeedbackRating | null;
+  feedbackText?: string | null;
 };
 
 const POSITION_KEYS = new Set(Object.keys(POSITIONS) as PositionKey[]);
@@ -56,6 +69,12 @@ function mapRemoteResult(payload: RemoteResultPayload): SavedResultEntry {
     summary: payload.summary ?? '',
     strengths: Array.isArray(payload.strengths) ? payload.strengths : [],
     watchouts: Array.isArray(payload.watchouts) ? payload.watchouts : [],
+    leadName: payload.leadName ?? null,
+    leadEmail: payload.leadEmail ?? null,
+    leadCapturedAt: payload.leadCapturedAt ?? null,
+    feedbackRating: payload.feedbackRating ?? null,
+    feedbackText: payload.feedbackText ?? null,
+    feedbackSubmittedAt: payload.feedbackSubmittedAt ?? null,
     utmSource: payload.utmSource ?? null,
     utmMedium: payload.utmMedium ?? null,
     utmCampaign: payload.utmCampaign ?? null,
@@ -79,12 +98,13 @@ export async function fetchResults(signal?: AbortSignal): Promise<SavedResultEnt
 export async function createResult(
   answers: AnswerMap,
   source: SourceMetadata = {},
+  details: ResultUpdatePayload = {},
   signal?: AbortSignal,
 ): Promise<SavedResultEntry> {
   const response = await fetch('/api/results', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ answers, ...source }),
+    body: JSON.stringify({ answers, ...source, ...details }),
     signal,
   });
 
@@ -95,6 +115,30 @@ export async function createResult(
   const data = (await response.json()) as { result?: RemoteResultPayload };
   if (!data.result) {
     throw new Error('Malformed create result response');
+  }
+
+  return mapRemoteResult(data.result);
+}
+
+export async function updateResult(
+  id: string,
+  payload: ResultUpdatePayload,
+  signal?: AbortSignal,
+): Promise<SavedResultEntry> {
+  const response = await fetch(`/api/results/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update result');
+  }
+
+  const data = (await response.json()) as { result?: RemoteResultPayload };
+  if (!data.result) {
+    throw new Error('Malformed update result response');
   }
 
   return mapRemoteResult(data.result);

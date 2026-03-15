@@ -3,21 +3,34 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ResultCard } from '@/components/ResultCard';
-import { calculateResult, formatShareText, type AnswerMap } from '@/lib/scoring/calculateResult';
+import { ResultsFeedbackSection } from '@/components/ResultsFeedbackSection';
+import { calculateResult, formatShareText } from '@/lib/scoring/calculateResult';
 import { trackEvent } from '@/lib/analytics/analytics';
+import type { FeedbackRating, SavedResultEntry } from '@/lib/storage/results';
 
 type ResultsScreenProps = {
-  answers: AnswerMap;
+  entry: SavedResultEntry;
   onRetake: () => void;
   onBackHome: () => void;
   onOpenHistory: () => void;
+  onFeedbackSubmit: (payload: { feedbackRating: FeedbackRating; feedbackText: string | null }) => Promise<void> | void;
+  isFeedbackSaving?: boolean;
 };
 
-export function ResultsScreen({ answers, onRetake, onBackHome, onOpenHistory }: ResultsScreenProps) {
+export function ResultsScreen({
+  entry,
+  onRetake,
+  onBackHome,
+  onOpenHistory,
+  onFeedbackSubmit,
+  isFeedbackSaving = false,
+}: ResultsScreenProps) {
+  const { answers } = entry;
   const result = useMemo(() => calculateResult(answers), [answers]);
   const maxScore = result.primary?.score ?? 1;
   const shareText = useMemo(() => formatShareText(result), [result]);
   const lastViewedKey = useRef<string | null>(null);
+  const feedbackViewedKey = useRef<string | null>(null);
 
   useEffect(() => {
     const viewKey = `${result.primary?.key ?? 'none'}-${result.secondary?.key ?? 'none'}-${Object.keys(answers).length}`;
@@ -29,6 +42,19 @@ export function ResultsScreen({ answers, onRetake, onBackHome, onOpenHistory }: 
       answersCount: Object.keys(answers).length,
     });
   }, [answers, result.primary?.key, result.secondary?.key]);
+
+  function handleFeedbackViewed() {
+    if (feedbackViewedKey.current === entry.id) return;
+    feedbackViewedKey.current = entry.id;
+    trackEvent('feedback_viewed', { resultId: entry.id });
+  }
+
+  function handleFeedbackRatingSelected(rating: FeedbackRating) {
+    trackEvent('feedback_rating_selected', {
+      resultId: entry.id,
+      feedbackRating: rating,
+    });
+  }
 
   async function handleShare() {
     try {
@@ -93,6 +119,15 @@ export function ResultsScreen({ answers, onRetake, onBackHome, onOpenHistory }: 
           ))}
         </div>
       </div>
+
+      <ResultsFeedbackSection
+        initialRating={entry.feedbackRating ?? null}
+        initialText={entry.feedbackText ?? null}
+        onViewed={handleFeedbackViewed}
+        onRatingSelected={handleFeedbackRatingSelected}
+        onSubmit={onFeedbackSubmit}
+        isSubmitting={isFeedbackSaving}
+      />
 
       <div className="mt-8 flex flex-wrap gap-4">
         <button onClick={onRetake} className="rounded-2xl bg-white px-6 py-3 font-medium text-black">Retake assessment</button>
